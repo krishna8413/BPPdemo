@@ -1,0 +1,219 @@
+====================================================================
+ PICKIWORLD OPC PVT LTD - WEBSITE SETUP GUIDE
+ How to set up and run this project on a new PC
+====================================================================
+
+This project is a Next.js website (with Tailwind CSS, Framer Motion,
+GSAP, and Lottie animations) built for Pickiworld OPC Pvt Ltd.
+
+Follow the steps below in order. Steps 1-2 are one-time installs on
+the new PC. Steps 3-5 get the actual website running.
+
+
+--------------------------------------------------------------------
+STEP 1: INSTALL NODE.JS (required)
+--------------------------------------------------------------------
+1. Go to: https://nodejs.org
+2. Download the "LTS" version (currently Node 20.x or 22.x).
+3. Run the installer, click Next through all default options.
+4. Restart your PC (or at least close/reopen any terminal windows).
+5. Check it worked by opening PowerShell or Command Prompt and typing:
+
+   node -v
+   npm -v
+
+   You should see version numbers printed (e.g. v20.11.0 / 10.2.4).
+   If you get "command not found", restart your PC and try again.
+
+
+--------------------------------------------------------------------
+STEP 2: INSTALL GIT (required if using GitHub)
+--------------------------------------------------------------------
+1. Go to: https://git-scm.com/downloads
+2. Download and install for Windows (default options are fine).
+3. Check it worked:
+
+   git --version
+
+
+--------------------------------------------------------------------
+STEP 3: GET THE PROJECT FILES ONTO THE NEW PC
+--------------------------------------------------------------------
+Choose ONE of the two options below.
+
+OPTION A - Clone from GitHub (recommended)
+--------------------------------------------
+If the project has been pushed to GitHub at:
+   https://github.com/krishna8413/BPPdemo.git
+
+Open PowerShell / Command Prompt, go to the folder where you want the
+project to live (e.g. Desktop or Documents), then run:
+
+   git clone https://github.com/krishna8413/BPPdemo.git
+   cd BPPdemo
+
+OPTION B - Copy the folder manually
+--------------------------------------------
+1. Zip the project folder on the original PC:
+   C:\Users\2440789\IDP project\Personal\BPO
+2. Copy the zip file to the new PC using a USB drive, OneDrive,
+   email, or any file-transfer method.
+3. Extract the zip on the new PC.
+4. Open PowerShell / Command Prompt and "cd" into the extracted
+   folder, for example:
+
+   cd "C:\Users\YourName\Desktop\BPO"
+
+
+--------------------------------------------------------------------
+STEP 4: INSTALL PROJECT DEPENDENCIES
+--------------------------------------------------------------------
+From inside the project folder (the one containing package.json),
+run:
+
+   npm install
+
+This downloads Next.js, React, Tailwind CSS, Framer Motion, GSAP,
+Lottie, and every other package the site needs. It usually takes
+1-3 minutes depending on internet speed. Wait until it finishes with
+no red "error" text (some yellow "warnings" are normal and fine).
+
+
+--------------------------------------------------------------------
+STEP 5: RUN THE WEBSITE LOCALLY
+--------------------------------------------------------------------
+Still inside the project folder, run:
+
+   npm run dev
+
+Wait for a message like:
+   "Local: http://localhost:3000"
+
+Open a web browser and go to:
+
+   http://localhost:3000
+
+You should see the Pickiworld website with animations working. Leave
+this terminal window open while you're browsing/testing - closing it
+stops the site. Press CTRL + C in the terminal to stop the server
+when you're done.
+
+
+--------------------------------------------------------------------
+STEP 6 (OPTIONAL): TEST A PRODUCTION BUILD
+--------------------------------------------------------------------
+Before putting the site online, it's good to confirm the optimized
+production build also works:
+
+   npm run build
+   npm start
+
+Then open http://localhost:3000 again. Press CTRL + C to stop it.
+If "npm run build" shows errors, copy the error text and share it -
+don't deploy until this step is clean.
+
+
+--------------------------------------------------------------------
+STEP 7: EDIT COMPANY DETAILS BEFORE GOING LIVE
+--------------------------------------------------------------------
+All contact info (email, phone numbers, address, social links) is in
+ONE file, so you only need to edit it once:
+
+   src\lib\siteConfig.ts
+
+Open it in any text editor (Notepad, VS Code, etc.), replace the
+placeholder values with Pickiworld's real details, save, and refresh
+the browser (if "npm run dev" is still running, changes appear
+automatically).
+
+Services, industries, testimonials, FAQs, and stats are in:
+
+   src\lib\data.ts
+
+
+--------------------------------------------------------------------
+STEP 8: MAKE THE CONTACT FORM ACTUALLY SEND EMAILS
+--------------------------------------------------------------------
+The Contact page form uses a free service called Formspree so you
+don't need your own backend server.
+
+1. Go to: https://formspree.io
+2. Sign up for a free account.
+3. Create a new form and copy the Form ID it gives you (a short code,
+   e.g. "abcd1234").
+4. Open src\lib\siteConfig.ts and find this line:
+
+      formspreeId: "YOUR_FORMSPREE_ID",
+
+   Replace YOUR_FORMSPREE_ID with the code Formspree gave you, e.g:
+
+      formspreeId: "abcd1234",
+
+5. Save the file. Submissions from the Contact page will now arrive
+   in the email you used to sign up on Formspree (free tier allows a
+   generous number of submissions per month).
+
+
+--------------------------------------------------------------------
+STEP 9: HOST THE WEBSITE ONLINE FOR FREE (Vercel)
+--------------------------------------------------------------------
+Vercel is made by the creators of Next.js and has a genuinely free
+tier that's perfect for this project.
+
+1. Push the project to GitHub if you haven't already:
+
+      git add -A
+      git commit -m "Update site content"
+      git push
+
+2. Go to: https://vercel.com and sign up (you can sign up directly
+   with your GitHub account - it's free, no credit card required).
+3. Click "Add New Project", then select your BPPdemo GitHub repo.
+4. Vercel auto-detects it's a Next.js project - leave all settings on
+   default and click "Deploy".
+5. After 1-2 minutes you'll get a free live URL like:
+
+      https://bppdemo.vercel.app
+
+6. Every time you "git push" new changes to GitHub, Vercel will
+   automatically re-deploy the updated site.
+7. Later, if you buy a custom domain (e.g. pickiworld.com), you can
+   attach it to this Vercel project for free (domain purchase itself
+   is not free, but connecting it to Vercel is).
+
+
+--------------------------------------------------------------------
+TROUBLESHOOTING
+--------------------------------------------------------------------
+- "npm install" fails or hangs:
+    Check your internet connection. If you're on a corporate network
+    with a proxy/VPN, try disabling VPN or ask IT about npm registry
+    access. Delete the "node_modules" folder and "package-lock.json"
+    file (if present) and run "npm install" again.
+
+- "npm run dev" shows a port already in use error:
+    Another program is using port 3000. Close other terminal windows
+    running a dev server, or run: npm run dev -- -p 3001
+    and open http://localhost:3001 instead.
+
+- Page looks unstyled / animations missing:
+    Make sure "npm run dev" is still running in a terminal and that
+    you did a hard refresh in the browser (Ctrl + Shift + R).
+
+- Contact form shows "Form isn't connected yet":
+    You haven't added your Formspree ID yet - see Step 8 above.
+
+
+--------------------------------------------------------------------
+QUICK COMMAND SUMMARY (copy-paste order)
+--------------------------------------------------------------------
+git clone https://github.com/krishna8413/BPPdemo.git
+cd BPPdemo
+npm install
+npm run dev
+
+Then open http://localhost:3000 in your browser.
+
+====================================================================
+ End of guide - Pickiworld OPC Pvt Ltd
+====================================================================

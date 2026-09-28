@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: #161331;
+}
+
+::selection {
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5fb;
+}
+::-webkit-scrollbar-thumb {
+  background: #c6cbff;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4f46e5;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #4f46e5 0%, #22c99b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Light, shadow-based card (replaces old dark glassmorphism) */
+.soft-card {
+  background: #ffffff;
+  border: 1px solid rgba(22, 19, 49, 0.06);
+  box-shadow: 0 8px 30px -8px rgba(22, 19, 49, 0.1);
+}
+
+/* Dark indigo-navy panel — used for strategic dark blocks (split sections, CTA, footer) */
+.dark-panel {
+  background-color: #161331;
+  color: #ffffff;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background-color: #3fe0aa;
+  color: #161331;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #22c99b;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background-color: #161331;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #37345a;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(22, 19, 49, 0.25);
+  color: #161331;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  border-color: #4f46e5;
+  color: #4f46e5;
+  transform: translateY(-2px);
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-light:hover {
+  border-color: #3fe0aa;
+  color: #3fe0aa;
+  transform: translateY(-2px);
+}
