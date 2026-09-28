@@ -89,7 +89,7 @@ export default function CareersPage() {
           <a href={`mailto:${siteConfig.contact.careersEmail}`} className="text-brand-600 hover:underline">
             {siteConfig.contact.careersEmail}
           </a>{" "}
-          — we're always open to meeting good people.
+          — we&apos;re always open to meeting good people.
         </AnimatedSection>
       </section>
 
@@ -98,10 +98,10 @@ export default function CareersPage() {
           <AnimatedSection direction="left">
             <h2 className="font-display text-3xl font-bold text-ink-900">Life at Pickiworld</h2>
             <p className="mt-4 text-ink-500">
-              We invest in our people because they're the ones delivering the
+              We invest in our people because they&apos;re the ones delivering the
               experience our clients and their customers feel every day.
-              Whether you're supporting a shopper in Mumbai or a subscriber
-              in Manchester, you'll get the training and support to do it
+              Whether you&apos;re supporting a shopper in Mumbai or a subscriber
+              in Manchester, you&apos;ll get the training and support to do it
               well.
             </p>
           </AnimatedSection>
